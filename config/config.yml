@@ -1,0 +1,65 @@
+#Ce fichier contiens la config de base du serveur---
+Pied:
+    facebook: '#'
+    twitter: https://twitter.com/craftmywebsite
+    youtube: https://youtu.be/zg06Mz5l1HM
+    discord: https://discord.gg/cVw9UkU
+All:
+    1:
+        titre: Sécurité
+        texte: "Nous travaillons en permanence à l'élaboration et à l'amélioration de nos systèmes de prévention de tricheurs afin d'instaurer un gameplay sans failles."
+        icone: "<i class="fas fa-shield-alt"></i>"
+    2:
+        titre: Puissance
+        texte: >
+            Nos serveurs sont hébergés sur des machines puissantes
+            capables de chargersupporter des charges lourdes
+            garantissant un service constamment stable.
+        icone: "<i class='fa fa-rocket'></i>"
+    3:
+        titre: Équipe
+        texte: "Notre équipe est constituée de joueurs passionés et mâtures, à l'écoute prêts à vous aider en toutes circonstances et toujours disponibles."
+        icone: "<i class='fa fa-users'></i>"
+    Seo:
+        color: CB2027
+        name: 'Nom du serveur - Serveur Minecraft'
+        description: "Rejoignez nom de votre serveur à l'adresse play.votreserveur.fr"
+        image: >
+            https://craftmywebsite.fr/forum/data/resource_icons/0/151.jpg?1530470355
+        google: ""
+        bing: ""
+    forum:
+        discord:
+            etat: 'false'
+            id: "557178315471978515"
+        twitter:
+            etat: 'false'
+            id: craftmywebsite
+    Tokens:
+        nom: Jetons
+        icon: fas fa-gem
+    Boutique:
+        historique: 'true'
+        panier: 'true'
+    YT: https://youtu.be/zg06Mz5l1HM
+Infos:
+    1:
+        message: "<i class='fa fa-cube'></i> Gameplay riche, activement développé"
+    2:
+        message: "<i class='fa fa-globe'></i> Serveurs toujours disponibles"
+    3:
+        message: "<i class='fa fa-users'></i> Communauté chaleureuse, accueillante"
+    4:
+        message: "<i class="fas fa-shield-alt"></i> Systèmes anti-triche élaboré avec soins"
+    5:
+        message: "<i class="fas fa-shopping-basket"></i> Boutique no pay-to-win"
+cookies:
+    bg: FFFFFF
+    bouton: CB2027
+    message: >
+       Nous utilisons des cookies pour vous garantir un meilleure
+        expérience sur notre site.
+couleur: CB2027
+img:
+    banner: theme/supreme/img/banner.png
+    
