@@ -1,42 +1,4 @@
 <script type="application/javascript">
-    
-    function cmw() {
-        console.log("Version CMS: <?= $versioncms; ?>");
-        if(document.querySelectorAll("[versioncms]").length > 0) {
-            console.log("Version affiché");
-        } else {
-            console.log("Version non affiché");
-        }
-        <?php if(isset($_Serveur_['SYSTEMINFO'])) { ?>
-            console.log("SYSTEMINFO: <?=$_Serveur_['SYSTEMINFO']?>");
-        <?php } else { ?>
-            console.log("Aucune info");
-        <?php } 
-        if(!isset($_Serveur_['lastCMWCheck']) && $_Serveur_['lastCMWCheck'] < time() && $_Serveur_['lastCMWCheck'] < time() + 86400) { ?>
-            console.log("La dernière vérification du site web est trop ancienne! Le système peut avoir été enlevé manuellement");
-        <?php }  else if($_Serveur_['lastCMWCheck'] > time()) {
-            $time = round(($_Serveur_['lastCMWCheck'] - time()) / 60); ?>
-            console.log("Dernière vérification il y a <?=$time?> minute(s)");
-         <?php } ?>
-    }
-
-    toastr.options = {
-        "closeButton"   : true,
-        "debug"         : true,
-        "newestOnTop"      : false,
-        "progressBar"      : false,
-        "positionClass"    : "toast-top-right",
-        "preventDuplicates": false,
-        "onclick"          : null,
-        "showDuration"     : "500",
-        "hideDuration"     : "500",
-        "timeOut"          : "5000",
-        "extendedTimeOut"  : "1000",
-        "showEasing"       : "swing",
-        "hideEasing"       : "linear",
-        "showMethod"       : "fadeIn",
-        "hideMethod"       : "fadeOut"
-    }
     function notif(type,message, header)
     {
          toastr[type](message, header);
@@ -58,22 +20,6 @@
         modal.find('.modal-body #id').val(id);
         modal.find('.modal-body #entite').val(entite);
     });
-
-    //Other
-
-    <?php
-    if (!empty($_Serveur_['General']['ipTexte'])) : ?>
-
-        function copierIP() {
-            var copyText = document.getElementById("iptexte");
-            copyText.select();
-            document.execCommand("copy");
-            notif("success", "Vous avez copié l\'adresse IP du serveur !");
-        }
-
-    <?php endif; ?>
-
-    //Scripts de page
 
     <?php if (isset($_GET['page']) && $_GET['page'] == 'membres') : //Recherche de membres dans la page membre 
     ?>

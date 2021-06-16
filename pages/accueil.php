@@ -4,110 +4,126 @@
         En attente de la plateforme vidéo</div>
     <div class="jumbotron-mask"></div>
     <div class="jumbotron-body">
-        <div class="container">
-            <h2>
-                <?php echo $_Serveur_['General']['name'] ?></h2>
-            <h3>
-                <?php echo $_Serveur_['General']['description'] ?></h3>
-            <?php if($_Serveur_['General']['statut'] == 0)
+        
+    <div class="container">
+            <h2><?php echo $_Serveur_['General']['name'] ?></h2>
+            <h3><?php echo $_Serveur_['General']['description'] ?></h3>
+			<input type="text" value="<?php echo $_Serveur_['General']['ipTexte']; ?>" id="myInput" style="opacity: 0">
+		  	<?php if($_Serveur_['General']['statut'] == 0)
                 { ?>
-            <center><button onclick="copierIP()" class="btn btn-normal btn-primary btn-ip"
-                     d><?php echo $_Serveur_['General']['ipTexte']; ?></button>
-                <?php
+				<center><button onclick="myFunction()" class="btn btn-normal btn-primary btn-ip"><?php echo $_Serveur_['General']['ipTexte']; ?></button>
+				<?php
 				}
                 elseif($_Serveur_['General']['statut'] == 1)
                 { ?>
-                <center><button onclick="copierIP()" class="btn btn-normal btn-success btn-ip"
-                        
-                        ><?php echo $_Serveur_['General']['ipTexte']; ?></button>
-                    <br />
-                    <strong class='text-success'>(En Ligne : <?php echo $playeronline ?> / <?php echo $maxPlayers ?>
-                        )</strong>
-                    <?php
+				<center><button onclick="myFunction()" class="btn btn-normal btn-success btn-ip"><?php echo $_Serveur_['General']['ipTexte']; ?></button>
+					  <br/>
+                    <strong class='text-success'>(En Ligne : <?php echo $playeronline ?> / <?php echo $maxPlayers ?> )</strong>
+				<?php
 				}
                 else{ ?>
-                    <center><button onclick="copierIP()" onmouseover="mypreFunction()"
-                            class="btn btn-normal btn-danger btn-ip" 
-                            ><?php echo $_Serveur_['General']['ipTexte']; ?></button>
-                        <?php } ?>
-                        <input type="text" value="test" id="ipInput">
-                        <script>
-                            <?php
-                            if ($_Serveur_['General']['statut'] == 0) {
-                                ?> // Offline
-                                function mypreFunction() {
+				<center><button onclick="myFunction()" onmouseover="mypreFunction()" class="btn btn-normal btn-danger btn-ip"><?php echo $_Serveur_['General']['ipTexte']; ?></button>
+			<?php } ?>
+			<script>
+            function myFunction() {
+              var copyText = document.getElementById("myInput");
+              copyText.select();
+			  document.execCommand("copy");
+			  toastr["success"]("Vous avez copier l'adresse IP du serveur !", "Succés");
+			  toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-left",
+				"preventDuplicates": false,
+				"onclick": null,
+				"showDuration": "1000",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+				}
+            }
+			<?php if($_Serveur_['General']['statut'] == 0)
+            { ?>// Offline
+			function mypreFunction() {
 
-                                    toastr["error"]("[Infos] Serveur hors ligne");
-                                    toastr.options = {
-                                        "closeButton": true,
-                                        "debug": false,
-                                        "newestOnTop": false,
-                                        "progressBar": true,
-                                        "positionClass": "toast-bottom-center",
-                                        "preventDuplicates": true,
-                                        "onclick": null,
-                                        "showDuration": "300",
-                                        "hideDuration": "1000",
-                                        "timeOut": "5000",
-                                        "extendedTimeOut": "1000",
-                                        "showEasing": "swing",
-                                        "hideEasing": "linear",
-                                        "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    }
-                                } <?php
-                            }
-                            elseif($_Serveur_['General']['statut'] == 1) {
-                                ?> //Online
-                                function mypreFunction() {
+			toastr["error"]("[Infos] Serveur hors ligne");
+			toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+				}
+            }
+			<?php
+				}
+                elseif($_Serveur_['General']['statut'] == 1)
+                { ?>//Online
+			function mypreFunction() {
 
-                                    toastr["success"]("[Infos] Serveur en ligne (Cliquer pour copier l'ip)");
-                                    toastr.options = {
-                                        "closeButton": true,
-                                        "debug": false,
-                                        "newestOnTop": false,
-                                        "progressBar": true,
-                                        "positionClass": "toast-bottom-center",
-                                        "preventDuplicates": true,
-                                        "onclick": null,
-                                        "showDuration": "300",
-                                        "hideDuration": "1000",
-                                        "timeOut": "5000",
-                                        "extendedTimeOut": "1000",
-                                        "showEasing": "swing",
-                                        "hideEasing": "linear",
-                                        "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    }
-                                } 
-                            <?php
-                            }
-                            else { 
-                            ?> //Service outrage
-                                function mypreFunction() {
+			toastr["success"]("[Infos] Serveur en ligne (Cliquer pour copier l'ip)");
+			toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+				}
+		  }
+			<?php
+				}
+                else{ ?>//Service outrage
+			function mypreFunction() {
 
-                                    toastr["warning"]("[Infos] Serveur en maintenance");
-                                    toastr.options = {
-                                        "closeButton": true,
-                                        "debug": false,
-                                        "newestOnTop": false,
-                                        "progressBar": true,
-                                        "positionClass": "toast-bottom-center",
-                                        "preventDuplicates": true,
-                                        "onclick": null,
-                                        "showDuration": "300",
-                                        "hideDuration": "1000",
-                                        "timeOut": "5000",
-                                        "extendedTimeOut": "1000",
-                                        "showEasing": "swing",
-                                        "hideEasing": "linear",
-                                        "showMethod": "fadeIn",
-                                        "hideMethod": "fadeOut"
-                                    }
-                                } <?php
-                            }?>
-                        </script>
+			toastr["warning"]("[Infos] Serveur en maintenance");
+			toastr.options = {
+				"closeButton": true,
+				"debug": false,
+				"newestOnTop": false,
+				"progressBar": true,
+				"positionClass": "toast-bottom-center",
+				"preventDuplicates": true,
+				"onclick": null,
+				"showDuration": "300",
+				"hideDuration": "1000",
+				"timeOut": "5000",
+				"extendedTimeOut": "1000",
+				"showEasing": "swing",
+				"hideEasing": "linear",
+				"showMethod": "fadeIn",
+				"hideMethod": "fadeOut"
+				}
+		  }
+			<?php } ?>
+    </script>
         </div>
+
     </div>
 </section>
 <section class="content-item grey" id="services">
@@ -138,9 +154,10 @@
     <div class="container">
         <div class="project-feature">
             <div class="row">
-                <div class="col-md-6 hidden-sm">
+                <div class="col-md-6">
                     <img src="<?php echo $_Theme_['img']['banner'];?>" class="img-responsive" alt=""
                         style="height:300px;">
+
                 </div>
                 <div class="col-md-6">
                     <h3>Nos avantages</h3>

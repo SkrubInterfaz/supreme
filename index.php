@@ -70,6 +70,7 @@ $_Theme_ = $configTheme->GetTableau();
         href="theme/<?= $_Serveur_['General']['theme']; ?>/assets/css/toastr.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="theme/<?=$_Serveur_['General']['theme']; ?>/assets/css/color/red.css">
+    <link href="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/css/magnific-popup.css" rel="stylesheet" type="text/css">
     <link href="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/css/creative-brands.css" rel="stylesheet" type="text/css">
     <script type="application/javascript" src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/ckeditor.js">
     </script>
@@ -107,6 +108,9 @@ $_Theme_ = $configTheme->GetTableau();
         var _Jetons_ = "<?=$_Serveur_['General']['moneyName'];?>";
     </script>
     <?php
+    if (Permission::getInstance()->verifPerm("connect")){
+        setcookie('form-pseudo',htmlspecialchars($_Joueur_['pseudo']));
+    }
     //Verif Version
     include("include/version.php");
     include("include/version_distant.php");
@@ -126,24 +130,35 @@ $_Theme_ = $configTheme->GetTableau();
     include('theme/' . $_Serveur_['General']['theme'] . '/formulaires.php'); //Forms included
     ?>
 
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/jquery.min.js"></script>
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/popper.min.js"></script>
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/bootstrap.min.js"></script>
 
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/zxcvbn.js"></script>
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets/js/custom.js"></script>
+    
 
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/bootstrap.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/owl.carousel.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/isotope.pkgd.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jqBootstrapValidation.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/waypoints.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.counterup.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.countdown.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.mb.YTPlayer.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/typed.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/creative-brands.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/morphext.min.js"></script>
+        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.nicescroll.min.js"></script>
+        <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
+        <?php
+        if(!isset($_Joueur_)){
+            echo '
+            <script src="theme/'. $_Serveur_['General']['theme'] .'/js/zxcvbn.js"></script>
+            <script src="theme/'. $_Serveur_['General']['theme'] .'/js/securepass.js"></script>';
+        } 
+        ?>
+        <script src="theme/<?=$_Serveur_['General']['theme'];?>/assets/js/custom.js"></script>
 
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/owl.carousel.min.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.mb.YTPlayer.min.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/typed.min.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/creative-brands.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/morphext.min.js"></script>
-    <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.nicescroll.min.js"></script>
-
-    <script>
-     $("#js-rotating").Morphext({
+        <script>
+        $("#js-rotating").Morphext({
             animation: "fadeIn",
             // An array of phrases to rotate are created based on this separator. Change it if you wish to separate the phrases differently (e.g. So Simple | Very Doge | Much Wow | Such Cool).
             separator: "|",
@@ -166,9 +181,9 @@ $_Theme_ = $configTheme->GetTableau();
         $(window).on('load',function(){
             $('#myModal').modal('show');
         });
-    </script>
+        </script>
+
     <?php include "theme/" . $_Serveur_['General']['theme'] . "/assets/php/ckeditorManager.php"; ?>
-    <script src="theme/<?= $_Serveur_['General']['theme']; ?>/assets//js/toastr.min.js"></script>
     <?php include "theme/" . $_Serveur_['General']['theme'] . "/assets/php/custom.php"; ?>
     <?php if ($_Serveur_['Payement']['dedipass']) : //API DEDIPASS 
     ?>

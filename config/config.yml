@@ -8,7 +8,7 @@ All:
     1:
         titre: Sécurité
         texte: "Nous travaillons en permanence à l'élaboration et à l'amélioration de nos systèmes de prévention de tricheurs afin d'instaurer un gameplay sans failles."
-        icone: "<i class="fas fa-shield-alt"></i>"
+        icone:  "<i class='fas fa-shield-alt'></i>"
     2:
         titre: Puissance
         texte: >
@@ -24,10 +24,6 @@ All:
         color: CB2027
         name: 'Nom du serveur - Serveur Minecraft'
         description: "Rejoignez nom de votre serveur à l'adresse play.votreserveur.fr"
-        image: >
-            https://craftmywebsite.fr/forum/data/resource_icons/0/151.jpg?1530470355
-        google: ""
-        bing: ""
     forum:
         discord:
             etat: 'false'
@@ -50,9 +46,9 @@ Infos:
     3:
         message: "<i class='fa fa-users'></i> Communauté chaleureuse, accueillante"
     4:
-        message: "<i class="fas fa-shield-alt"></i> Systèmes anti-triche élaboré avec soins"
+        message: "<i class='fas fa-shield-alt'></i> Systèmes anti-triche élaboré avec soins"
     5:
-        message: "<i class="fas fa-shopping-basket"></i> Boutique no pay-to-win"
+        message: "<i class='fas fa-shopping-basket'></i> Boutique no pay-to-win"
 cookies:
     bg: FFFFFF
     bouton: CB2027
@@ -61,5 +57,4 @@ cookies:
         expérience sur notre site.
 couleur: CB2027
 img:
-    banner: theme/supreme/img/banner.png
-    
+    banner: theme/default/img/banner.png
