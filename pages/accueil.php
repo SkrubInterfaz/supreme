@@ -248,14 +248,14 @@
                                                 $getCheckLike = $reqCheckLike->fetch(PDO::FETCH_ASSOC);
                                                 $checkLike = $getCheckLike['pseudo'];
                                                 if ($_Joueur_['pseudo'] == $checkLike) : ?>
-                                                    <a href="#" class="h5 mr-3" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commenter (<?= $countCommentaires ?>)</a> <i class="fa fa-thumbs-up"></i> <?= $countLikesPlayers ?>
+                                                    <a href="#" class="h5 mr-3 color-main" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commentaires (<?= $countCommentaires ?>)</a> - ( <?= $countLikesPlayers ?> <i class="fa fa-thumbs-up"></i> )
                                                 <?php else : ?>
-                                                    <a href="#" class="h5 mr-3" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commenter (<?= $countCommentaires ?>)</a>
-                                                    <a href="index.php?action=likeNews&id_news=<?= $news[$i]['id'] ?>" class="h5 mx-3">J'aime</a>
+                                                    <a href="#" class="h5 mr-3 color-main" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commentaires (<?= $countCommentaires ?>)</a> -
+                                                    <a href="index.php?action=likeNews&id_news=<?= $news[$i]['id'] ?>" class="h5 mx-3 color-main">J'aime</a>
                                                     <i class="fa fa-thumbs-up"></i> <?= $countLikesPlayers ?>
                                                 <?php endif; ?>
                                             <?php else : ?>
-                                                <a href="#" class="h5 mr-3" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commenter (<?= $countCommentaires ?>)</a> <i class="fa fa-thumbs-up"></i> <?= $countLikesPlayers ?>
+                                                <a href="#" class="h5 mr-3 color-main" data-toggle="modal" data-target="#news<?= $news[$i]['id'] ?>">Commentaires (<?= $countCommentaires ?>)</a> ( <?= $countLikesPlayers ?> <i class="fa fa-thumbs-up"></i> )
                                             <?php endif; ?>
                                 </strong>
 

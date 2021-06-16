@@ -105,7 +105,7 @@
                                     <input type="password" name="mdp" class="form-control" id="MdpConnectionForm"
                                         placeholder="Votre mot de passe" aria-describedby="seepassword" required>
                                     <span class="input-group-btn">
-                                        <button type="button">
+                                        <button type="button" class="btn w-100 h-100">
                                             <span toggle="#MdpConnectionForm"
                                                 class="fa fa-fw fa-eye field-icon toggle-password input-group-addon"
                                                 id="seepassword"></span>
@@ -134,38 +134,30 @@
 
 <!-- Mot de passe oublié -->
 
-<div class="modal fade" id="passRecover" tabindex="-1" role="dialog" aria-labelledby="passRecover" aria-hidden="true"
-    style="padding-right: 16px;">
-    <div class="modal-dialog modal-lg">
+<div class="modal fade" id="passRecover" style="background-color: rgba(0,0,0,0.8) !important;" tabindex="-1"
+    role="dialog" aria-labelledby="passRecover" aria-hidden="true" style="padding-right: 16px;">
+    <div class="modal-dialog">
         <div class="modal-content">
             <form role="form" method="post" action="?action=passRecover">
                 <div class="modal-header">
-                    <h5 class="modal-title">Mot de passe oublié</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color: var(--base-color);">&times;</span>
-                    </button>
+                    <h4 class="modal-title">Mot de passe oublié</h4>
                 </div>
 
-                <div class="modal-body pt-3">
+                <div class="modal-body form-signin row pt-3">
 
-                    <label for="EmailRecoverForm"> Mail de votre compte :</label>
-                    <div class="col-10">
+                    <label for="EmailRecoverForm" class="text-center">Adresse email du compte :</label>
+                    <div class="col-md-12">
                         <div class="input-group">
-                            <span class="input-group-prepend">
-                                <div class="input-group-text bg-main border-0">
-                                    <i class="fas fa-envelope"></i>
-                                </div>
-                            </span>
-                            <input type="email" name="email" class="form-control custom-text-input"
-                                id="EmailRecoverForm" placeholder="Votre mail" required autofocus>
+                            <span class="input-group-addon" id="basic-addon1"><i class="fas fa-envelope-open"
+                                    aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" name="email" id="EmailRecoverForm" required
+                                autocomplete="" placeholder="Votre adresse email" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100"
+                                style="padding: 2rem; margin-top: 20px">Récupéré mon compte</button>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-main w-100 mt-4">Retrouver mon mot de
-                        passe !</button>
                 </div>
 
             </form>
@@ -173,175 +165,115 @@
     </div>
 </div>
 
-<div class="modal fade" id="InscriptionSlide" tabindex="-1" role="dialog" aria-labelledby="InscriptionSlide"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <form role="form" method="post" action="?action=inscription">
+<section class="inscription-pop">
+    <div class="modal fade" id="InscriptionSlide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Inscription</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" style="color: var(--base-color);">&times;</span>
-                    </button>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Inscription</h4>
                 </div>
-
-                <div class="modal-body pt-3">
-
-                    <div class="text-center">
-                        <small>Les champs obligatoires sont précédés par une étoile <span
-                                class="star-required"></span></small>
-                    </div>
-
-                    <div class="form-row py-1">
-                        <div class="col-md-12 py-2">
-                            <label for="PseudoInscriptionForm"> Pseudo <span class="star-required"></span></label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                </span>
-                                <input type="text" name="pseudo" class="form-control custom-text-input"
-                                    id="PseudoInscriptionForm" placeholder="Entrez votre pseudo" required autofocus>
-                            </div>
+                <div class="modal-body">
+                    <form role="form" method="post" action="?&action=inscription">
+                        <?php if($apiMail == 1) { ?>
+                        <center>
+                            <p>
+                                <div class="alert alert-warning" style="text-align: center;">
+                                    Nous vous enverons un e-mail pour activé votre compte
+                                </div>
+                            </p>
+                        </center>
+                        <?php } ?>
+                        <div class="form-group">
+                            <label for="PseudoInscriptionForm">Pseudo</label>
+                            <input type="text" name="pseudo" class="form-control" id="PseudoInscriptionForm"
+                                placeholder="Votre pseudo exact In-Game" required>
                         </div>
-
-                        <div class="col-md-12 py-2">
-                            <label for="EmailInscriptionForm"> Email <span class="star-required"></span></label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fa fa-user"></i>
-                                    </div>
-                                </span>
-                                <input type="text" name="email" class="form-control custom-text-input"
-                                    id="EmailInscriptionForm" placeholder="Entrez votre mail" required>
-                            </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="show_email" name="show_email">
-                                <label class="custom-control-label" for="show_email">Rendre
-                                    votre adresse email
-                                    publique</label>
-                            </div>
-
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="souvenir" name="souvenir">
-                                <label class="custom-control-label" for="souvenir">S'inscrire à
-                                    la newsletter</label>
-                            </div>
-
+                        <div class="form-group">
+                            <label for="EmailInscriptionForm">Email</label>
+                            <input type="email" name="email" class="form-control" id="EmailInscriptionForm"
+                                placeholder="Merci d'entrer une adresse email valide" required>
                         </div>
+                        <div class="form-group input-group">
 
-                    </div>
-
-                    <div class="form-row py-1">
-
-                        <div class="col-md-6">
-                            <label for="MdpInscriptionForm"> Mot de passe <span class="star-required"></span></label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fas fa-key"></i>
+                            <label for="MdpInscriptionForm">Mot de passe</label>
+                            <input type="password" name="mdp" class="form-control" onKeyUp="securPass();"
+                                id="MdpInscriptionForm" placeholder="Votre mot de passe" required>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn w-100" style="margin-top: 22px !important">
+                                    <span toggle="#MdpInscriptionForm"
+                                        class="fa fa-fw fa-eye field-icon toggle-password input-group-addon"
+                                        id="seepassword"></span>
+                                </button>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="MdpConfirmInscriptionForm">Confirmation du Mot de passe</label>
+                            <input type="password" name="mdpConfirm" class="form-control" onKeyUp="securPass();"
+                                id="MdpConfirmInscriptionForm" placeholder="Confirmez-le" required>
+                        </div>
+                        <div class="form-group row d-none" id="progress">
+                            <!-- <div class="col-md-12">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                            id="progressbar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                        </div>
                                     </div>
-                                </span>
-                                <input type="password" name="mdp" class="form-control custom-text-input"
-                                    id="MdpInscriptionForm" placeholder="Entrez votre mot de passe"
-                                    onKeyUp="securPass();" required>
-                                <div class="input-group-append">
-                                    <span toggle="#MdpInscriptionForm, #MdpConfirmInscriptionForm"
-                                        class="fa fa-fw fa-eye field-icon toggle-password "></span>
+                                </div> -->
+                            <div class="col-md-12">
+                                <div class="text-right">
+                                    <span id="correspondance">
+                                    </span>
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group row col-md-5">
+                            <label for="ageForm" class="form-label">Âge (facultatif)</label>
+                            <input type="number" name="age" id="ageForm" class="form-control" value="0" min="0"
+                                max="122">
 
-
-                        <div class="col-md-6">
-                            <label for="MdpConfirmInscriptionForm"> Confirmation <span
-                                    class="star-required"></span></label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fas fa-key"></i>
-                                    </div>
-                                </span>
-                                <input type="password" name="mdpConfirm" class="form-control custom-text-input"
-                                    id="MdpConfirmInscriptionForm" placeholder="Entrez votre mot de passe"
-                                    onKeyUp="securPass();" required>
-                                <div class="input-group-append">
-                                    <span class="input-group-text mdp-confirm-form" id="correspondance"></span>
-                                </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="souvenir" checked> S'inscrire à la newsletter
+                                </label>
+                                <br />
+                                <label class="form-check-label">
+                                    <input type="checkbox" name="show_email" value="true"> Rendre votre adresse email
+                                    publique
+                                </label>
                             </div>
                         </div>
-
-                        <div class="col-md-12 mt-3">
-                            <div class="col-md-12 d-none" id="progress">
-                                <div class="progress">
-                                    <div class="progress-bar" id="progressbar" role="progressbar" aria-valuenow="0"
-                                        aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Captcha:</label>
+                                <input type='text' name='CAPTCHA' placeholder='captcha' class="form-control" required />
+                            </div>
+                            <div class="col-md-6">
+                                <img id='captcha' src='include/purecaptcha/purecaptcha_img.php?t=login_form' />
+                                <br />
+                                <br />
+                                <br />
+                                <button type='button'
+                                    onclick='var t=document.getElementById("captcha"); t.src=t.src+"&amp;"+Math.random();'
+                                    class="btn btn-success btn-block"><span
+                                        class="glyphicon glyphicon-refresh spin"></span> Recharger le captcha</button>
+                                <br />
                             </div>
                         </div>
-
-                    </div>
-
-                    <div class="form-row py-1">
-
-                        <div class="col-md-12">
-                            <label for="MdpageForm"> Âge (<small>0 pour cacher</small>) </label>
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fas fa-user"></i>
-                                    </div>
-                                </span>
-                                <input type="number" name="age" class="form-control custom-text-input" id="MdpageForm"
-                                    placeholder="Entrez votre Âge" value="0" min="0" max="999">
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="form-row py-2">
-
-                        <div class="col-md-12">
-                            <label for="CAPTCHA">Captcha <span class="star-required"></span></label>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <img id='captcha' alt="captcha" src='include/purecaptcha/purecaptcha_img.php?t=login_form'
-                                style="width: 80%;height: 100px;" />
-                        </div>
-                        <div class="col-md-6">
-                            <button type="button"
-                                onclick='var t=document.getElementById("captcha"); t.src=t.src+"&amp;"+Math.random();'
-                                class="btn btn-reverse captcha-btn" style="margin-top:35px">
-                                <i class="fas fa-sync"></i> Recharger le captcha
-                            </button>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="input-group">
-                                <span class="input-group-prepend">
-                                    <div class="input-group-text bg-main border-0">
-                                        <i class="fas fa-lock"></i>
-                                    </div>
-                                </span>
-                                <input type='text' name='CAPTCHA' class="form-control custom-text-input" id="captcha"
-                                    placeholder="Entrez le captcha">
-                            </div>
-                        </div>
-
-                    </div>
-
+                        </br>
+                        <button type="submit" class="btn btn-success btn-block" id="InscriptionBtn"
+                            disabled><strong>S'inscrire !</strong></button>
+                    </form>
                 </div>
-
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-main w-100" id="InscriptionBtn">S'inscrire</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Fermer</button>
                 </div>
-            </form>
-        </div>
-    </div>
-</div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</section>
+
 
 <!-- Système de news -->
 
@@ -355,18 +287,18 @@
 
 <div class="modal fade" id="news<?= $news[$i]['id']; ?>" tabindex="-1" role="dialog"
     aria-labelledby="news<?= $news[$i]['id']; ?>" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-lg h-100">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Commentaires</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: var(--base-color);">&times;</span>
-                </button>
             </div>
 
             <div class="modal-body">
-                <br>
-                <?php
+                <div class="modal-body">
+                    <br>
+
+
+                    <?php
                                 $getNewsCommentaires = $accueilNews->newsCommentaires($news[$i]['id']);
                                 while ($newsComments = $getNewsCommentaires->fetch(PDO::FETCH_ASSOC)) :
                                     if (Permission::getInstance()->verifPerm("connect")) :
@@ -379,90 +311,101 @@
                                     endif; ?>
 
 
-                <!-- Commentaires News -->
+                    <!-- Commentaires News -->
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Commentaire par <?= $newsComments['pseudo'] ?> | Le:
+                                <?= date('d/m', $newsComments['date_post']) ?> à
+                                <?= date('H:i', $newsComments['date_post']); ?>
+                            </div>
+                            <div class="panel-body">
+                                <div class="well">
+                                    <?=$newsComments['commentaire'];?>
 
-                <div class="media m-2 pb-4">
-                    <p class="username">
-                        <img class="mr-3" src="<?= $_ImgProfil_->getUrlHeadByPseudo($newsComments['pseudo'], 32); ?>"
-                            style="width: 32px; height: 32px;" alt="avatar de <?= $newsComments['pseudo'] ?>" />
-                        <div class="media-body">
-                            <h5 class="mt-0">
-                                <?= $newsComments['pseudo'] ?>
-                                <small class="font-weight-light float-right text-muted">
-                                    le <?= date('d/m', $newsComments['date_post']) ?> à
-                                    <?= date('H:i', $newsComments['date_post']); ?>
-                                </small> <b></b>
-                                <?= Permission::getInstance()->gradeJoueur($newsComments['pseudo']) ?>
-                            </h5>
-                            <?php echo $newsComments['commentaire'];?>
+                                </div>
+
+                            </div>
+                            <div class="panel-footer">
+                                <?php if (Permission::getInstance()->verifPerm("connect")) : ?>
+
+
+                                <div class="dropdown mt-3 ml-5" style="display: inline-block !important">
+                                    <button class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">
+                                        Actions </button>
+                                    <ul class="dropdown-menu">
+                                        <?php if ($newsComments['pseudo'] == $_Joueur_['pseudo'] or Permission::getInstance()->verifPerm("createur")) : ?>
+
+
+                                        <li>
+                                            <a class="dropdown-item" href="#" data-toggle="modal"
+                                                data-target="#news<?= $news[$i]['id'] ?>-<?= $newsComments['id'] ?>-edit"
+                                                data-dismiss="modal">
+                                                Editer
+                                            </a>
+                                        </li>
+                                        <li>
+
+                                            <a class="dropdown-item text-danger"
+                                                href="index.php?action=delete_news_commentaire&id_comm=<?= $newsComments['id'] ?>&id_news=<?= $news[$i]['id'] ?>&auteur=<?= $newsComments['pseudo'] ?>">
+                                                Supprimer
+                                            </a>
+                                        </li>
+
+                                        <?php endif; ?>
+                                        <?php if ($newsComments['pseudo'] != $_Joueur_['pseudo']) :
+                                            if ($checkReport == "0") : ?>
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="index.php?action=report_news_commentaire&id_news=<?= $news[$i]['id'] ?>&id_comm=<?= $newsComments['id'] ?>&victime=<?= $newsComments['pseudo'] ?>">
+                                                Signaler ce commentaire
+                                            </a>
+                                        </li>
+                                        <?php else : ?>
+                                        <li>
+                                            <a class="dropdown-item" href="#" disabled>Ce commentaire à déjà était
+                                                signalé</a>
+                                        </li>
+                                        <?php endif; ?>
+                                        <?php endif; ?>
+                                    </ul>
+                                </div>
+                                <div style="color: red;display: inline-block !important">
+                                    <?=
+                                ($newsComments['nbrEdit'] >= "1") ? 'Nombre d\'édition: ' . $newsComments['nbrEdit'] . ' <br> ' : '' ?>
+                                    <?= ($countReportsVictimes != "0") ? $countReportsVictimes . ' Signalement <br> ' : '' ?>
+                                </div>
+
+                                <?php endif; ?>
+
+
+                            </div>
+
                         </div>
-                    </p>
-
-
-                    <!-- Gestion du message -->
+                    </div>
+                    <?php endwhile; ?>
                     <?php if (Permission::getInstance()->verifPerm("connect")) : ?>
-
-                    <span style="color: red;">
-                        <?= ($newsComments['nbrEdit'] != "0") ? 'Nombre d\'édition: ' . $newsComments['nbrEdit'] . ' <br> ' : '' ?>
-                        <?= ($countReportsVictimes != "0") ? $countReportsVictimes . ' Signalement <br> ' : '' ?>
-                    </span>
-
-                    <div class="dropdown mt-3 ml-5">
-                        <button class="btn btn-reverse dropdown-toggle" data-toggle="dropdown">
-                            Actions </button>
-                        <ul class="dropdown-menu">
-                            <?php if ($newsComments['pseudo'] == $_Joueur_['pseudo'] or Permission::getInstance()->verifPerm("createur")) : ?>
-
-
-                            <a class="dropdown-item" href="#" data-toggle="modal"
-                                data-target="#news<?= $news[$i]['id'] ?>-<?= $newsComments['id'] ?>-edit"
-                                data-dismiss="modal">
-                                Editer
-                            </a>
-                            <a class="dropdown-item text-danger"
-                                href="index.php?action=delete_news_commentaire&id_comm=<?= $newsComments['id'] ?>&id_news=<?= $news[$i]['id'] ?>&auteur=<?= $newsComments['pseudo'] ?>">
-                                Supprimer
-                            </a>
-
-                            <?php endif; ?>
-                            <?php if ($newsComments['pseudo'] != $_Joueur_['pseudo']) :
-                                                        if ($checkReport == "0") : ?>
-                            <a class="dropdown-item"
-                                href="index.php?action=report_news_commentaire&id_news=<?= $news[$i]['id'] ?>&id_comm=<?= $newsComments['id'] ?>&victime=<?= $newsComments['pseudo'] ?>">
-                                Signaler
-                            </a>
-                            <?php else : ?>
-                            <a class="dropdown-item" href="#" disabled>Déjà signalé</a>
-                            <?php endif; ?>
-                            <?php endif; ?>
-                        </ul>
+                    <div class="modal-footer">
+                        <form action="?action=post_news_commentaire&id_news=<?php echo $news[$i]['id']; ?>"
+                            method="post">
+                            <h5>
+                                Commenter
+                            </h5>
+                            <textarea name="commentaire" class="form-control w-100 mb-3" required></textarea>
+                            <small>
+                                <span class="float-left"><b>Min : </b> 6 charactères. </span>
+                                <span class="float-right"><b>Max : </b> 255 charactères.</span>
+                            </small>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Envoyé</button>
+                        </form>
+                    </div>
+                    <?php else: ?>
+                    <div class="modal-footer">
                     </div>
                     <?php endif; ?>
+
                 </div>
-                <?php endwhile; ?>
             </div>
-            <?php if (Permission::getInstance()->verifPerm("connect")) : ?>
-            <div class="modal-footer w-100">
-                <form action="?action=post_news_commentaire&id_news=<?php echo $news[$i]['id']; ?>" method="post"
-                    class="w-100">
-                    <h5>
-                        Commenter !
-                    </h5>
-                    <textarea name="commentaire" class="form-control w-100 mb-3" required></textarea>
-                    <small>
-                        <span class="float-left"><b>Min : </b> 6 charactères. </span>
-                        <span class="float-right"><b>Max : </b> 255 charactères.</span>
-                    </small>
-                    <button type="submit" class="btn btn-main w-100 mt-3">Commenter</button>
-                </form>
-            </div>
-            <?php else : ?>
-            <div class="modal-footer text-center">
-                <div class="alert alert-danger">Veuillez-vous connecter pour mettre un
-                    commentaire.</div>
-                <a data-toggle="modal" data-target="#ConnectionSlide" class="btn btn-warning">Connexion</a>
-            </div>
-            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -486,9 +429,6 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Édition du commentaire</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" style="color: var(--base-color);">&times;</span>
-                </button>
             </div>
 
             <form
@@ -508,7 +448,7 @@
                         <span class="float-left"><b>Min : </b> 6 charactères. </span>
                         <span class="float-right"><b>Max : </b> 255 caractères.</span>
                     </small>
-                    <button type="submit" class="btn btn-main w-100 btn-block">Valider la
+                    <button type="submit" class="btn btn-primary w-100 btn-block">Valider la
                         modification</button>
                 </div>
             </form>

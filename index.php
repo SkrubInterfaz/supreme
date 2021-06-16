@@ -13,8 +13,17 @@ $_Theme_ = $configTheme->GetTableau();
 
     <style>
         :root {
-            --couleurmain: #<?=$_Theme_["couleur"];
-            ?>;
+            --couleurmain: #<?=$_Theme_["couleur"];?>;
+        }
+        .bg-main {
+            background-color: #<?=$_Theme_["couleur"];?>;
+        }
+        .btn-main {
+            background-color: #<?=$_Theme_["couleur"];?>;
+            color: #f4f4f4
+        }
+        .color-main{
+            color: #<?=$_Theme_["couleur"];?> !important; 
         }
     </style>
 
@@ -146,7 +155,6 @@ $_Theme_ = $configTheme->GetTableau();
         <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/typed.min.js"></script>
         <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/creative-brands.js"></script>
         <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/morphext.min.js"></script>
-        <script src="theme/<?php echo $_Serveur_['General']['theme']; ?>/assets/js/jquery.nicescroll.min.js"></script>
         <script src="https://codeseven.github.io/toastr/build/toastr.min.js"></script>
         <?php
         if(!isset($_Joueur_)){
@@ -167,15 +175,6 @@ $_Theme_ = $configTheme->GetTableau();
             complete: function () {
             // Called after the entrance animation is executed.
             }
-        });
-        $("#do-nicescroll").niceScroll({
-            cursorcolor:"rgb(203, 32, 39)",
-            cursorwidth:"5px",
-            background:"#333",
-            cursorborder:"1px solid rgb(203, 32, 39)",
-            cursorborderradius:0,
-            scrollspeed: 40,
-            autohidemode:false,
         });
 
         $(window).on('load',function(){
